@@ -1,17 +1,25 @@
 <p align="center">
   <a href="https://github.com/tomanAdrian/Projekt2" rel="noopener">
-    <img width="200" height="200" src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo">
+    <img width="200" height="200" src="https://raw.githubusercontent.com/tomanAdrian/Projekt2/refs/heads/main/KIS-logo.svg" alt="KIS logo">
   </a>
 </p>
 
 <h3 align="center">Automatické sťahovanie a vyhodnocovanie konfigurácie sieťových zariadení</h3>
 
-<div align="center">
-  [![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/tomanAdrian/Projekt2)
-  [![GitHub Issues](https://img.shields.io/github/issues/tomanAdrian/Projekt2.svg)](https://github.com/tomanAdrian/Projekt2/issues)
-  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/tomanAdrian/Projekt2.svg)](https://github.com/tomanAdrian/Projekt2/pulls)
-  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-</div>
+<p align="center">
+  <a href="https://github.com/tomanAdrian/Projekt2">
+    <img src="https://img.shields.io/badge/status-active-success.svg" alt="status"/>
+  </a>
+  <a href="https://github.com/tomanAdrian/Projekt2/issues">
+    <img src="https://img.shields.io/github/issues/tomanAdrian/Projekt2.svg" alt="issues"/>
+  </a>
+  <a href="https://github.com/tomanAdrian/Projekt2/pulls">
+    <img src="https://img.shields.io/github/issues-pr/tomanAdrian/Projekt2.svg" alt="pull requests"/>
+  </a>
+  <a href="https://github.com/tomanAdrian/Projekt2/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"/>
+  </a>
+</p>
 
 ---
 
