@@ -38,7 +38,6 @@
 - [TODO](TODO.md)  
 - [Príspevky](CONTRIBUTING.md)  
 - [Autori](#autori)  
-- [Poďakovanie](#podakovanie)  
 
 ## 🧐 O projekte <a name="o-projekte"></a>
 
@@ -148,8 +147,3 @@ gunicorn --workers 4 --bind 0.0.0.0:5000 app:app
 ## ✍️ Autori <a name="autori"></a>
 
 - **Adrian Toman** – [tomanAdrian](https://github.com/tomanAdrian)
-
-## 🎉 Poďakovanie <a name="podakovanie"></a>
-
-- Inšpirácia z pôvodného projektu “Automatické sťahovanie a vyhodnocovanie konfigurácie sieťových zariadení”  
-- Vďaka open-source komunite za knižnice  
