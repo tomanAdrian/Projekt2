@@ -1,0 +1,387 @@
+body {                                      /* Nastavenie štýlov pre celú stránku */
+    font-family: Arial, sans-serif;         /* Nastavenie písma */
+    background-color: #f8f9fa;              /* Svetlo šedá farba pozadia */
+    color: #212529;                         /* Tmavo šedá farba textu */
+    margin: 0;                              /* Odstránenie okrajov */
+    padding: 0;                             /* Odstránenie vnútorných okrajov */
+}
+
+header {                                    /* Záhlavie stránky */
+    background-color: #0056b3;              /* Modrá farba pozadia */
+    color: #fff;                            /* Biela farba textu */
+    padding: 20px 0;                        /* Vertikálne odsadenie */
+    text-align: center;                     /* Text zarovnaný na stred */
+}
+
+header h1 {                                 /* Nadpis v záhlaví */
+    margin: 0;                              /* Odstránenie okrajov okolo nadpisu */
+    font-size: 24px;                        /* Veľkosť nadpisu */
+}
+
+header p {                                  /* Podnadpis v záhlaví */
+    margin: 5px 0 0;                        /* Horný okraj 5px, bez spodného */
+    font-size: 16px;                        /* Menšia veľkosť textu */
+}
+
+h2 {                                        /* Nadpisy v stĺpcoch */
+    color: #0056b3;                         /* Modrá farba nadpisu */
+    margin-top: 0;                          /* Odstránenie horného okraja */
+}
+
+label {                                     /* Štítky pre formulárové vstupy */
+    font-weight: normal;                    /* Normálne (nie tučné) písmo */
+    margin-top: 10px;                       /* Horný okraj medzi štítkom a predchádzajúcim elementom */
+    display: block;                         /* Zabezpečenie, že každý štítok je na samostatnom riadku */
+}
+
+input[type="text"],                         /* Štýly pre textové vstupy */
+input[type="password"] {                    /* Štýly pre vstupy na heslo */
+    width: 100%;                            /* Vstupy zaberú celú šírku rodiča */
+    padding: 10px;                          /* Vnútorné odsadenie */
+    margin-top: 10px;                       /* Horný okraj nad vstupom */
+    border: 1px solid #ced4da;              /* Ohraničenie */
+    border-radius: 5px;                     /* Zaoblenie rohov */
+    box-sizing: border-box;                 /* Vrátane paddingu do celkovej šírky */
+    height: 40px;                           /* Nastavená pevná výška */
+}
+
+textarea {                                  /* Štýly pre textové pole */
+    width: 100%;                            /* Textové pole zaberá celú šírku rodiča */
+    height: 125px;                          /* Nastavená pevná výška */
+    padding: 10px;                          /* Vnútorné odsadenie */
+    font-size: 14px;                        /* Veľkosť textu */
+    border: 1px solid #ced4da;              /* Ohraničenie */
+    border-radius: 5px;                     /* Zaoblenie rohov */
+    resize: vertical;                       /* Povoliť zmenu veľkosti vertikálne */
+    box-sizing: border-box;                 /* Vrátane paddingu do celkovej šírky */
+}
+
+.password-container {                       /* Kontajner pre heslo (vstup a tlačidlo) */
+    display: flex;                          /* Flexbox na zarovnanie vstupu a tlačidla vedľa seba */
+    align-items: center;                    /* Vertikálne zarovnanie obsahu */
+    gap: 5px;                               /* Medzera medzi vstupom a tlačidlom */
+    margin-top: -20px;                      /* Zmenšenie horného odsadenia */
+}
+
+.password-container button {                /* Tlačidlo na zobrazenie hesla */
+    width: auto;                            /* Automatická šírka podľa obsahu */
+    height: 40px;                           /* Rovnaká výška ako textové pole */
+    padding: 0 15px;                        /* Vnútorné odsadenie pre horizontálne zarovnanie */
+    font-size: 14px;                        /* Veľkosť textu */
+    background-color: #0056b3;              /* Modrá farba pozadia */
+    color: white;                           /* Biela farba textu */
+    border: none;                           /* Odstránenie ohraničenia */
+    border-radius: 5px;                     /* Zaoblenie rohov */
+    cursor: pointer;                        /* Zmena kurzora na ukazovateľ */
+    display: flex;                          /* Flexbox na zarovnanie obsahu */
+    align-items: center;                    /* Vertikálne zarovnanie textu */
+    justify-content: center;                /* Horizontálne zarovnanie textu */
+}
+
+.password-container button:hover {          /* Štýl pri prechode myšou */
+    background-color: #fff;              /* Tmavšia modrá */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Zvýraznenie tieňa */
+    color: #0056b3;
+    border: 1px solid #0056b3; 
+}
+
+button {                                    /* Štýly pre tlačidlá */
+    width: 200px;                           /* Pevná šírka */
+    height: 50px;                           /* Pevná výška */
+    background-color: #0056b3;              /* Modrá farba pozadia */
+    color: #fff;                            /* Biela farba textu */
+    border: none;                           /* Odstránenie ohraničenia */
+    border-radius: 5px;                     /* Zaoblenie rohov */
+    font-size: 16px;                        /* Veľkosť textu */
+    font-weight: bold;                      /* Zvýraznenie textu */
+    text-align: center;                     /* Text zarovnaný na stred */
+    cursor: pointer;                        /* Zmena kurzora na ukazovateľ */
+    margin: 20px auto;                      /* Vertikálne zarovnanie a odsadenie */
+    display: block;                         /* Blokový režim na vystredenie */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Jemný tieň */
+}
+
+button:hover {                              /* Štýl pri prechode myšou */
+    background-color: #fff;              /* Tmavšia modrá */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Zvýraznenie tieňa */
+    color: #0056b3;
+    border: 1px solid #0056b3; 
+
+}
+
+footer {                                    /* Štýly pre pätičku stránky */
+    text-align: center;                     /* Text zarovnaný na stred */
+    padding: 10px 0;                        /* Vertikálne odsadenie */
+    background-color: #f1f1f1;              /* Svetlo šedá farba pozadia */
+    color: #6c757d;                         /* Tmavo šedá farba textu */
+    font-size: 14px;                        /* Veľkosť textu */
+}
+
+.column {                                   /* Štýly pre jednotlivé stĺpce */
+    width: 48%;                             /* Každý stĺpec zaberá 45% šírky kontajnera */
+    padding: 10px;                          /* Vnútorné odsadenie vo vnútri stĺpca */
+    background-color: #fff;                 /* Biele pozadie */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Jemný tieň */
+    border-radius: 15px;                     /* Zaoblenie rohov */
+    
+}
+
+.container, .results-columns {
+    /*max-width: 1200px; /* Nastavenie maximálnej šírky pre obe sekcie */
+    margin: auto;    /* Centrovanie obsahu */
+    padding: 30px;     /* Rovnaké vnútorné odsadenie */
+    display: flex;
+    gap: auto;         /* Medzera medzi stĺpcami */
+    justify-content: space-between; /* Vyrovnanie obsahu */
+}
+
+.result-column {
+    flex: 1; /* Prispôsobenie šírky na rovnakú veľkosť v rámci kontajnera */
+    max-width: 48%; /* Rovnaká maximálna šírka ako stĺpce v .container */
+    background-color: #e0e6eb;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #212529;
+    text-align: left;
+    overflow-y: scroll; /* Povoliť zvislé posúvanie */
+    height: 500px; /* Fixná výška pre sekciu výsledkov */
+    position: relative;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+/* Štýl pre riadky */
+.line-number {
+    width: 20px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+    color: #888;
+}
+
+.line {
+    display: inline-block;
+    width: calc(100% - 40px); /* Zvyšok šírky po číslovaní */
+    font-size: 14px;
+    line-height: 1.1; /* Zmenšenie medzery medzi riadkami */
+}
+
+.difference {
+    font-weight: bold;
+}
+
+.ref-diff {
+    background-color: #ffcccc; /* Svetločervené pozadie pre referenčné rozdiely */
+    color: #900;               /* Tmavočervený text */
+    font-weight: bold;
+}
+
+.comp-diff {
+    background-color: #ccffcc; /* Svetlozelené pozadie pre porovnávané rozdiely */
+    color: #090;               /* Tmavozelený text */
+    font-weight: bold;
+}
+
+
+/* Scrollbar styling */
+.result-column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.result-column::-webkit-scrollbar-thumb {
+    background-color: #0056b3;
+    border-radius: 4px;
+}
+
+.site-navigation {
+    margin-top: 15px; /* Adds space between the subtitle and menu */
+    text-align: center; /* Center align the menu */
+    background-color: #0056b3; /* Match the header color */
+}
+
+.site-navigation .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    gap: 20px; /* Space between menu items */
+}
+
+.site-navigation .menu li {
+    display: inline;
+}
+
+.site-navigation .menu li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.site-navigation .menu li a:hover {
+    background-color: white;
+    color: #0056b3;
+}
+
+
+.settings-icon:hover {
+    background-color: white;
+    color: #0056b3;
+}
+
+.settings-wrapper {
+    position: relative;
+}
+
+.settings-icon {
+    cursor: pointer;
+    font-size: 28px;
+    color: #0056b3;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.settings-icon:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.settings-menu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 250px;
+    z-index: 10;
+    text-align: left;
+}
+.settings-menu.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.settings-menu label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* Animácia */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+#comparingMessage {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#add_file_button {
+        background-color: #0056b3;
+        color: white;
+        font-size: 14px;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    #add_file_button:hover {
+        background-color: #003f85;
+    }
+
+    .sortable-file-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        max-height: 240px;
+        overflow-y: auto;
+        background-color: white;
+    }
+
+    .sortable-file-list li {
+        background-color: #f8f9fa;
+        margin: 5px;
+        padding: 12px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: grab;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .sortable-file-list li:hover {
+        background-color: #e2e6ea;
+    }
+
+    .sortable-file-list li.dragging {
+        opacity: 0.5;
+    }
+
+    .sortable-file-list li span.filename {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .sortable-file-list li button.remove-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .sortable-file-list li button.remove-btn:hover {
+        background: #c82333;
+    }
+
+    /* Štýl pre box s výstupom */
+/* Základné nastavenie wrappera výstupu */
+.config-output {
+  background-color: #e0e6eb;
+  border-radius: 15px;
+  padding: 5px;
+  /* toto nastaví fixnú výšku - doladi podľa potreby */
+  min-height: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  font-family: monospace;
+  white-space: pre-wrap;
+  color: #212529;
+}
+
+/* scrollbar styling */
+.config-output::-webkit-scrollbar { width: 8px; }
+.config-output::-webkit-scrollbar-thumb {
+  background-color: #0056b3;
+  border-radius: 4px;
+}
+.config-output::-webkit-scrollbar-track { background: transparent; }
+
+.config-output {
+  scrollbar-width: thin;
+  scrollbar-color: #0056b3 transparent;
+}
+

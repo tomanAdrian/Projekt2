@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Stiahnutie konfigurácií zo sieťových zariadení</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Stiahnutie konfigurácií zo sieťových zariadení</h1>
+        <p>Katedra informačných sietí, FRI UNIZA</p>
+        <nav class="site-navigation">
+            <ul class="menu">
+                <li><a href="{{ url_for('index') }}">Porovnávanie konfigurácií</a></li>
+                <li><a href="{{ url_for('batch') }}">Hromadné porovnávanie</a></li>
+                <li><a href="{{ url_for('download') }}">Stiahnutie konfigurácií</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="column">
+            <h2>Zadajte zariadenia</h2>
+            <p>Každé zariadenie na nový riadok (<code>ip_adresa:port</code>):</p>
+            <textarea id="device_addresses" rows="5" placeholder="192.168.1.1:23&#10;192.168.1.2:23"></textarea>
+
+            <label for="username"><strong>Prihlasovacie meno:</strong></label>
+            <input type="text" id="username" placeholder="Zadajte meno">
+
+            <label for="password"><strong>Prihlasovacie heslo:</strong></label>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Zadajte heslo">
+                <button type="button" onclick="togglePassword()">Zobraziť</button>
+            </div>
+
+            <button onclick="downloadConfigs()">Získať konfiguráciu</button>
+            <div id="downloadLinks" style="margin-top:1rem;"></div>
+        </div>
+
+        <div class="column" id="configDisplay">
+            <h2>Výstup konfigurácie</h2>
+            <div class="config-output">
+                <pre id="configOutput">Konfigurácia sa zobrazí tu...</pre>
+            </div>
+            <!-- Tlačidlo na stiahnutie sa zobrazí dynamicky -->
+            <button id="downloadBtn" style="display:none;" onclick="downloadFile()">Stiahnutie konfigurácie</button>
+        </div>
+    </div>
+
+    <footer>
+        <strong>&copy; 2024 FRI UNIZA, Katedra informačných sietí</strong>
+    </footer>
+
+    <script>
+        function togglePassword() {
+            const input = document.getElementById("password");
+            input.type = input.type === "password" ? "text" : "password";
+        }
+
+        let lastFileUrl, lastHostname;
+        function downloadConfigs() {
+            const addresses = document.getElementById("device_addresses").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            console.log("📤 downloadConfigs() called with:");
+            console.log("  addresses:", addresses.split("\n"));
+            console.log("  username:", username);
+            // (!) nechceme logovať heslo v produkcii, ale teraz pri debugu
+            console.log("  password:", password);
+            if (!addresses.trim()) { alert("Zadajte aspoň jedno zariadenie."); return; }
+            console.log("🔗 POSTing to", "{{ url_for('download_configs') }}");
+            fetch("{{ url_for('download_configs') }}", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ addresses: addresses.split("\n"), username, password })
+            })
+            .then(r=>r.json())
+            .then(data=>{
+                if (data.error) {
+                    alert(data.error);
+                    return
+                } 
+                 // 1) zobrazíme celý výpis
+                document.getElementById("configOutput").textContent = data.configs;
+
+                // 2) pripravíme tlačidlo na stiahnutie
+                //    ak máme viac URL (viac súborov), môžeme zobraziť linky,
+                //    tu ale ukážeme iba prvú:
+                if (data.file_urls && data.file_urls.length > 0) {
+                lastFileUrl = data.file_urls[0];               // prvý .txt
+                // hostname vydlabeme z cesty, napr. "configs/R1.txt" -> "R1"
+                lastHostname = lastFileUrl.split("/").pop().replace(/\.[^.]+$/, "");
+                document.getElementById("downloadBtn").style.display = "block";
+                } else {
+                // ak bundle_url
+                lastFileUrl = data.bundle_url;
+                lastHostname = "configs_bundle";
+                document.getElementById("downloadBtn").style.display = "block";
+                }
+            })
+            .catch(e=>console.error(e));
+        }
+
+        function downloadFile() {
+            // stiahne súbor s názvom <hostname>.txt
+            const a = document.createElement("a");
+            a.href = lastFileUrl;
+            a.download = lastHostname + ".txt";
+            a.click();
+        }
+    </script>
+</body>
+</html>
