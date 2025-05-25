@@ -7,108 +7,141 @@
 <h3 align="center">Automatické sťahovanie a vyhodnocovanie konfigurácie sieťových zariadení</h3>
 
 <div align="center">
-  [![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/tomanAdrian/Projekt2)  
-  [![GitHub Issues](https://img.shields.io/github/issues/tomanAdrian/Projekt2.svg)](https://github.com/tomanAdrian/Projekt2/issues)  
-  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/tomanAdrian/Projekt2.svg)](https://github.com/tomanAdrian/Projekt2/pulls)  
+  [![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/tomanAdrian/Projekt2)
+  [![GitHub Issues](https://img.shields.io/github/issues/tomanAdrian/Projekt2.svg)](https://github.com/tomanAdrian/Projekt2/issues)
+  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/tomanAdrian/Projekt2.svg)](https://github.com/tomanAdrian/Projekt2/pulls)
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 </div>
 
 ---
 
 <p align="center">
-  Tento projekt slúži na automatické sťahovanie konfigurácií sieťových zariadení cez Telnet, ich validáciu, porovnanie a export výsledkov do DOCX a ZIP formátu.
+  Tento projekt slúži na automatické sťahovanie, validáciu a porovnanie konfigurácií sieťových zariadení cez Telnet,  
+  s exportom výsledkov do DOCX a ZIP formátu.
 </p>
 
-## 📝 Table of Contents
+## 📝 Obsah
 
-- [About](#about)  
-- [Getting Started](#getting-started)  
-- [Usage](#usage)  
-- [Deployment](#deployment)  
-- [Built Using](#built-using)  
+- [O projekte](#o-projekte)  
+- [Začíname](#zaciname)  
+- [Použitie](#pouzitie)  
+- [Nasadenie](#nasadenie)  
+- [Použité technológie](#pouzite-technologie)  
 - [TODO](TODO.md)  
-- [Contributing](CONTRIBUTING.md)  
-- [Authors](#authors)  
-- [Acknowledgments](#acknowledgments)  
+- [Príspevky](CONTRIBUTING.md)  
+- [Autori](#autori)  
+- [Poďakovanie](#podakovanie)  
 
-## 🧐 About <a name="about"></a>
+## 🧐 O projekte <a name="o-projekte"></a>
 
-Automatické sťahovanie a vyhodnocovanie konfigurácie sieťových zariadení je webová aplikácia kombinujúca **Flask** (front-end) a vlastné Python moduly (**FastAPI** pre validation), ktorá umožňuje:
+**Automatické sťahovanie a vyhodnocovanie konfigurácie sieťových zariadení** je webová aplikácia, ktorá kombinuje:
 
-- Automatizované sťahovanie konfigurácií sieťových zariadení cez Telnet  
-- Validáciu výstupu príkazov pomocou vlastníckych validatorov  
-- Porovnanie konfigurácií riadok po riadku a zvýraznenie rozdielov  
-- Generovanie DOCX dokumentov a balenie výsledkov do ZIP archívov  
-- Jednoduché webové rozhranie s Jinja2 šablónami a vlastným CSS  
-- Správu referenčných a porovnávaných zariadení cez `.env` konfiguráciu  
+- **Flask** (front-end)  
+- **FastAPI** (validácia API)  
+- Vlastné Python moduly pre Telnet komunikáciu a validáciu  
 
-## 🏁 Getting Started <a name="getting-started"></a>
+Aplikácia umožňuje:
 
-Postup pre lokálne spustenie projektu:
+1. Sťahovať konfigurácie zo zariadení cez Telnet  
+2. Validovať a porovnávať konfigurácie riadok po riadku  
+3. Generovať výsledky do DOCX dokumentov  
+4. Baliť výsledky do ZIP archívov  
+5. Spravovať zariadenia cez `.env` konfiguráciu  
+6. Používať jednoduché webové rozhranie s Jinja2 a vlastným CSS  
 
-### Prerequisites
+## 🏁 Začíname <a name="zaciname"></a>
+
+Nasledujúci postup vám umožní spustiť projekt lokálne.
+
+### Požiadavky
 
 - **Python 3.11+**  
-- Git
+- **Git**
 
-### Installing
+### Inštalácia
 
 ```bash
-# Klonujte repozitár
+# Klonovanie repozitára
 git clone https://github.com/tomanAdrian/Projekt2.git
 cd Projekt2
 
-# Vytvorte a aktivujte virtuálne prostredie
+# Vytvorenie a aktivácia virtuálneho prostredia
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Aktualizujte pip a nainštalujte závislosti
+# Inštalácia závislostí
 pip install --upgrade pip setuptools wheel
 pip install -r requirements.txt
 ```
 
-## 🎈 Usage <a name="usage"></a>
+## 🎈 Použitie <a name="pouzitie"></a>
 
-1. Vytvorte súbor `.env` v koreňovom adresári s:
-   ```dotenv
-   TELNET_HOST=192.168.1.1
-   TELNET_PORT=23
-   ADMIN_USER=admin
-   ADMIN_PASS=secret
-   ```
-2. Spustite Flask backend:
-   ```bash
-   python app.py
-   ```
-   Otvorte <http://localhost:5000>  
-3. (Voliteľne) Spustite FastAPI časť:
-   ```bash
-   uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
-   ```
+Spustite aplikáciu a otvorte webové rozhranie, z ktorého môžete:
 
-## 🚀 Deployment <a name="deployment"></a>
+1. **Porovnávať zariadenia**  
+2. **Sťahovať konfigurácie**  
 
-Na produkčné nasadenie odporúčame použiť WSGI server (napr. Gunicorn) alebo kontajnerizáciu:
+#### Spustenie servera
+
+```bash
+python app.py
+```
+
+- Aplikácia beží na <http://localhost:5000>  
+
+#### Rozhranie pre porovnávanie konfigurácií
+
+1. Vyberte kartu **Porovnanie konfigurácií**  
+2. Zadajte referenčnú konfiguráciu (správna):
+   - **Vyberte možnosť:**  
+     - Stiahnuť konfiguráciu zo zariadenia/zariadení `(<ip_adresa>:<port>)`  
+     - Stiahnuť konfiguráciu zo zariadenia/zariadení `(<ip_adresa>:<port>;<meno>;<heslo>)`  
+     - Nahrať konfigurácie zo súborov (poradie = poradie zariadení zľava)  
+   - **Nahrať súbory:**  
+     - [Pridať súbory]  
+   - Zadajte **Poradie súborov** podľa poradia zariadení.
+
+3. Zadajte konfiguráciu na porovnanie:
+   - **Vyberte možnosť:**  
+     - Stiahnuť konfiguráciu zo zariadenia/zariadení `(<ip_adresa>:<port>)`  
+     - Stiahnuť konfiguráciu zo zariadenia/zariadení `(<ip_adresa>:<port>;<meno>;<heslo>)`  
+     - Nahrať konfigurácie zo súborov (poradie = poradie zariadení zľava)  
+   - **Nahrať súbory:**  
+     - [Pridať súbory]  
+   - Zadajte **Poradie súborov** podľa poradia zariadení.
+
+4. Kliknite na **Porovnať** a výsledky sa zobrazia priamo v prehliadači.
+
+#### Rozhranie pre sťahovanie konfigurácií
+
+1. Vyberte kartu **Sťahovanie konfigurácií**  
+2. Zadajte zoznam zariadení rovnako ako vyššie  
+3. Kliknite na **Stiahnuť**  
+4. Výsledné súbory si môžete stiahnuť v ZIP balíku alebo ako samostatné TXT.
+
+## 🚀 Nasadenie <a name="nasadenie"></a>
+
+Pre produkčné prostredie odporúčame:
 
 ```bash
 gunicorn --workers 4 --bind 0.0.0.0:5000 app:app
 ```
 
-## ⛏️ Built Using <a name="built-using"></a>
+## ⛏️ Použité technológie <a name="pouzite-technologie"></a>
 
 - [Flask](https://palletsprojects.com/p/flask/)  
 - [FastAPI](https://fastapi.tiangolo.com/)  
 - [python-dotenv](https://github.com/theskumar/python-dotenv)  
 - [paramiko](https://www.paramiko.org/)  
 - [python-docx](https://python-docx.readthedocs.io/)  
-- `zipfile` (stdlib)  
+- `zipfile` (Python stdlib)  
 - [Jinja2](https://palletsprojects.com/p/jinja/)  
 
-## ✍️ Authors <a name="authors"></a>
+## ✍️ Autori <a name="autori"></a>
 
 - **Adrian Toman** – [tomanAdrian](https://github.com/tomanAdrian)
 
-## 🎉 Acknowledgments <a name="acknowledgments"></a>
+## 🎉 Poďakovanie <a name="podakovanie"></a>
 
-- Inšpirácia a pôvodný koncept z pôvodného projektu  
-- Všetky open-source knižnice, ktoré umožňujú fungovanie tejto aplikácie  
+- Inšpirácia z pôvodného projektu “Automatické sťahovanie a vyhodnocovanie konfigurácie sieťových zariadení”  
+- Vďaka open-source komunite za knižnice  
