@@ -19,7 +19,7 @@ from src.core.config import TypeOfConnection
 #from config_diff_evaluator import clear_docx_content_in_place
 
 # Definícia priečinka na nahrávanie
-UPLOAD_FOLDER = "uploads"
+UPLOAD_FOLDER = "USER_REPORTS"
 
 
 
@@ -45,11 +45,14 @@ DEVICE_MANUFACTURERS = {
 
 app = Flask(__name__)
 
-UPLOAD_FILES_FOLDER = "uploaded_files"
+UPLOAD_FILES_FOLDER = "USER_UPLOAD_FILES"
 os.makedirs(UPLOAD_FILES_FOLDER, exist_ok=True)
-app.config['UPLOAD_FILES_FOLDER'] = UPLOAD_FILES_FOLDER
-STATIC_CONFIG_DIR = os.path.join(app.static_folder, "configs")
+app.config['USER_UPLOAD_FILES_FOLDER'] = UPLOAD_FILES_FOLDER
+# STATIC_CONFIG_DIR = os.path.join(app.static_folder, "CONFIGS")
+# os.makedirs(STATIC_CONFIG_DIR, exist_ok=True
+STATIC_CONFIG_DIR = "USER_CONFIGS"
 os.makedirs(STATIC_CONFIG_DIR, exist_ok=True)
+app.config['USER_CONFIGS'] = STATIC_CONFIG_DIR
 ##############################################################################################################
 # Funkcia na kontrolu povolených súborov
 # Vráti True, ak je súbor povolený
@@ -506,15 +509,15 @@ def ai_compare_configurations(device_name, compare_config, correct_config, model
 # Vytvorí priečinok, ak neexistuje
 # a vygeneruje názov súboru vo formáte "Report_YYYYMMDD_X.docx"
 def generate_report_filename():
-    today = datetime.datetime.now().strftime("%Y%m%d")
-    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
+    os.makedirs(f"{UPLOAD_FOLDER}/{today}", exist_ok=True)
 
     # Find the next available index
     index = 1
-    while os.path.exists(f"{UPLOAD_FOLDER}/Report_{today}_{index}.docx"):
+    while os.path.exists(f"{UPLOAD_FOLDER}/{today}/Report_{today}_{index}.docx"):
         index += 1
 
-    return f"{UPLOAD_FOLDER}/Report_{today}_{index}.docx"
+    return f"{UPLOAD_FOLDER}/{today}/Report_{today}_{index}.docx"
 ##############################################################################################################
 # Funkcia na vygenerovanie Word reportu
 # Vstup: správy ako slovník, cesta k súboru ako reťazec

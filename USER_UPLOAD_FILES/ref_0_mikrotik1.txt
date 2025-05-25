@@ -1,0 +1,20 @@
+# jan/01/2025 12:00:00 by RouterOS 6.48.4
+/interface ethernet
+set [ find default-name=ether1 ] name=WAN
+set [ find default-name=ether2 ] name=LAN
+/ip address
+add address=192.168.88.1/24 interface=LAN network=192.168.88.0
+/ip dhcp-server
+add name=dhcp1 interface=LAN lease-time=1d address-pool=dhcp_pool
+/ip dhcp-server network
+add address=192.168.88.0/24 gateway=192.168.88.1 dns-server=8.8.8.8
+/ip pool
+add name=dhcp_pool ranges=192.168.88.10-192.168.88.254
+/ip firewall filter
+add chain=input protocol=icmp action=accept
+add chain=input connection-state=established,related action=accept
+add chain=input connection-state=invalid action=drop
+add chain=input in-interface=WAN protocol=tcp dst-port=22 action=accept
+add chain=input in-interface=WAN action=drop
+/ip route
+add dst-address=0.0.0.0/0 gateway=10.0.0.1
